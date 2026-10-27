@@ -1,0 +1,318 @@
+/* =========================================
+   1. RESET & BOX MODEL
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* =========================================
+   2. UNIQUE COLOR PALETTE & DARK MODE
+   ========================================= */
+:root {
+    --color-bg: #f8fafc;            /* Light grayish blue background */
+    --color-surface: #ffffff;
+    --color-text: #0f172a;          /* Deep slate text */
+    --color-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-primary: #4f46e5;       /* Indigo Primary */
+    --color-primary-hover: #4338ca;
+    --color-accent: #f43f5e;        /* Rose accent for prices/badges */
+    --color-nav-active-bg: #e0e7ff; /* Light indigo for active nav */
+    --color-footer-bg: #1e1b4b;     /* Dark indigo footer */
+    --radius: 0.75rem;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 15px rgba(0,0,0,0.05);
+    --shadow-hover: 0 10px 25px rgba(79, 70, 229, 0.15); /* Indigo glow */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f172a;
+        --color-surface: #1e293b;
+        --color-text: #f8fafc;
+        --color-muted: #94a3b8;
+        --color-border: #334155;
+        --color-primary: #818cf8;
+        --color-primary-hover: #a5b4fc;
+        --color-accent: #fb7185;
+        --color-nav-active-bg: #3730a3;
+        --color-footer-bg: #020617;
+    }
+}
+
+/* =========================================
+   3. BASE STYLES
+   ========================================= */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+
+/* =========================================
+   4. HEADER & NAVBAR (With Active State)
+   ========================================= */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem; /* Gap kam kiya kyunke padding add ki hai */
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-text);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-nav-active-bg);
+}
+
+/* NAYA: Active Link Style (Jo page open ho uske liye) */
+.nav-links a.active {
+    color: var(--color-primary);
+    background-color: var(--color-nav-active-bg);
+}
+
+/* "Sell an item" Button Style */
+.nav-links .btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(79, 70, 229, 0.3);
+}
+
+.nav-links .btn:hover, .nav-links .btn.active {
+    background-color: var(--color-primary-hover);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   5. LAYOUT, HERO & GRID
+   ========================================= */
+.container {
+    max-width: 75rem;
+    margin-inline: auto;
+    padding: 2rem 1.5rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #4f46e5, #9333ea); /* Indigo to Purple */
+    color: white;
+    border-radius: 1.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+
+.hero .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--color-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.hero .cta-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+h2 {
+    color: var(--color-text);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--color-primary);
+    display: inline-block;
+    padding-bottom: 0.4rem;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover); /* Unique indigo glow */
+}
+
+.card img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.card-body { padding: 1.5rem; }
+.card-body h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-accent); /* Rose color for price */
+    margin-bottom: 0.5rem;
+}
+
+.meta { font-size: 0.9rem; color: var(--color-muted); margin-bottom: 1rem; }
+
+.card-body a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.card-body a:hover { text-decoration: underline; }
+
+/* Featured Badge */
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--color-accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(244, 63, 94, 0.4);
+}
+
+/* =========================================
+   6. FORM STYLES (sell.html)
+   ========================================= */
+.form-group { margin-bottom: 1.5rem; }
+label { display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-text); }
+
+input[type="text"], input[type="number"], select, textarea, input[type="file"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-nav-active-bg);
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+fieldset { border: 2px solid var(--color-border); border-radius: 0.5rem; padding: 1.2rem; margin-bottom: 1.5rem; }
+legend { font-weight: bold; padding: 0 0.5rem; }
+
+.radio-group label, .checkbox-group label { display: flex; align-items: center; gap: 0.5rem; font-weight: normal; margin-bottom: 0.5rem; cursor: pointer; }
+.checkbox-group input, .radio-group input { width: auto; accent-color: var(--color-primary); }
+
+.submit-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+.submit-btn:hover { background-color: var(--color-primary-hover); transform: translateY(-2px); }
+
+/* Grid for Form Row */
+.form-row { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+/* =========================================
+   7. TABLES & MISC
+   ========================================= */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: var(--color-surface); border-radius: var(--radius); overflow: hidden; }
+th, td { padding: 1rem; border-bottom: 1px solid var(--color-border); text-align: left; }
+th { background-color: var(--color-bg); font-weight: 700; color: var(--color-primary); }
+
+details { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1rem; margin-top: 1.5rem; cursor: pointer; }
+summary { font-weight: bold; color: var(--color-primary); }
+details ul { padding-left: 1.5rem; margin-top: 1rem; }
+
+footer {
+    background-color: var(--color-footer-bg);
+    color: #e2e8f0;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+footer a { color: #f43f5e; text-decoration: underline; font-weight: bold; }
+
+/* =========================================
+   8. RESPONSIVE & ACCESSIBILITY
+   ========================================= */
+@media (max-width: 600px) {
+    .nav-links li:not(:last-child) { display: none; } /* Mobile: Sirf button dikhega */
+    .hero { padding: 3rem 1rem; border-radius: 0; }
+    .hero h1 { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sell your second-hand items on CampusMart.">
+    <title>Sell an Item - CampusMart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+    <a href="index.html" class="logo" aria-label="CampusMart home">🛒 CampusMart</a>
+    <nav aria-label="Main navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">Browse</a></li>
+            <!-- Sell button ko active karna hai -->
+            <li><a href="sell.html" class="btn active">Sell an item</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container">
+        <section aria-labelledby="sell-heading">
+            <h2 id="sell-heading" style="border:none; margin-bottom:1.5rem;">Sell an Item</h2>
+            
+            <form action="/api/listings" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" required minlength="5" maxlength="100" placeholder="e.g. Casio fx-991EX Scientific Calculator">
+                </div>
+
+                <!-- Task 3: Price and Category Side-by-side (Grid) -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">-- Choose a category --</option>
+                            <option value="books">Books</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="stationery">Stationery</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price in Rs</label>
+                        <input id="price" name="price" type="number" required min="50" step="10" placeholder="e.g. 4500">
+                    </div>
+                </div>
+
+                <fieldset>
+                    <legend>Condition</legend>
+                    <div class="radio-group">
+                        <label><input type="radio" name="condition" value="NEW" required> New</label>
+                        <label><input type="radio" name="condition" value="LIKE_NEW"> Like new</label>
+                        <label><input type="radio" name="condition" value="GOOD"> Good</label>
+                        <label><input type="radio" name="condition" value="FAIR"> Fair</label>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required minlength="20" placeholder="Describe your item: brand, age, condition, any defects..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input id="photo" name="photo" type="file" accept="image/*">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" name="confirm" required>
+                        I confirm this item is mine to sell
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Publish Listing</button>
+            </form>
+        </section>
+
+        <section aria-labelledby="fees-heading" style="margin-top: 2rem;">
+            <h2 id="fees-heading">Selling Fees</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Listing Type</th>
+                        <th scope="col">Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard listing</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td>Featured listing</td>
+                        <td>Rs 500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <details>
+            <summary>🛡️ Safety Tips for Meeting Buyers</summary>
+            <ul>
+                <li>Always meet in a public place on campus (library, cafeteria).</li>
+                <li>Bring a friend if possible.</li>
+                <li>Inspect the item before payment.</li>
+                <li>Use cash or instant bank transfer — avoid cheques.</li>
+                <li>Trust your instincts; if something feels off, walk away.</li>
+            </ul>
+        </details>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CampusMart — <a href="mailto:help@campusmart.pk">help@campusmart.pk</a></p>
+    </footer>
+</body>
+</html>

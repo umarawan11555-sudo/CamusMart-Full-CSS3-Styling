@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy and sell second-hand items on campus.">
+    <title>CampusMart - Buy & Sell on Campus</title>
+    <!-- LINK TO EXTERNAL CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Flexbox Header -->
+    <header class="site-header">
+    <a href="index.html" class="logo" aria-label="CampusMart home">🛒 CampusMart</a>
+    <nav aria-label="Main navigation">
+        <ul class="nav-links">
+            <!-- Yahan class="active" add kiya hai -->
+            <li><a href="index.html" class="active">Browse</a></li>
+            <li><a href="sell.html" class="btn">Sell an item</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Buy &amp; Sell on Campus</h1>
+            <p>Textbooks, calculators, furniture and more — from students, for students.</p>
+            <a href="sell.html" class="cta-btn" aria-label="Start selling an item">Start Selling →</a>
+        </section>
+
+        <!-- Grid Listings -->
+        <section aria-labelledby="latest-heading">
+            <h2 id="latest-heading">Latest Listings</h2>
+            <div class="listing-grid">
+                <article class="card" aria-labelledby="listing-1-title">
+                    <!-- Task 4: Featured Badge -->
+                    <span class="badge">Featured</span>
+                    <img src="images/calculator.jpg" alt="Casio fx-991EX scientific calculator" width="400" height="300" loading="lazy">
+                    <div class="card-body">
+                        <h3 id="listing-1-title">Casio fx-991EX Calculator</h3>
+                        <p class="price">Rs 4,500</p>
+                        <p class="meta">Electronics • Good condition</p>
+                        <a href="#">View details →</a>
+                    </div>
+                </article>
+
+                <article class="card" aria-labelledby="listing-2-title">
+                    <img src="images/clrs-book.jpg" alt="Introduction to Algorithms (CLRS) textbook" width="400" height="300" loading="lazy">
+                    <div class="card-body">
+                        <h3 id="listing-2-title">Introduction to Algorithms (CLRS)</h3>
+                        <p class="price">Rs 3,500</p>
+                        <p class="meta">Books • Like new</p>
+                        <a href="#">View details →</a>
+                    </div>
+                </article>
+
+                <article class="card" aria-labelledby="listing-3-title">
+                    <img src="images/laptop.jpg" alt="Dell Latitude 7490 laptop" width="400" height="300" loading="lazy">
+                    <div class="card-body">
+                        <h3 id="listing-3-title">Dell Latitude 7490</h3>
+                        <p class="price">Rs 45,000</p>
+                        <p class="meta">Electronics • Good condition</p>
+                        <a href="#">View details →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" aria-labelledby="how-heading">
+            <h2 id="how-heading">How It Works</h2>
+            <ol>
+                <li>Create a free account with your university email.</li>
+                <li>Post a photo, price and description.</li>
+                <li>Meet the buyer safely on campus.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CampusMart — <a href="mailto:help@campusmart.pk">help@campusmart.pk</a></p>
+    </footer>
+</body>
+</html>
